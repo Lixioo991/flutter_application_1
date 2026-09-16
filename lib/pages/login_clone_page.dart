@@ -68,10 +68,7 @@ class LoginClonePage extends StatelessWidget {
             height: 40,
             child: ElevatedButton(
               onPressed: () {},
-              child: const Text(
-                'G     Google',
-                style: TextStyle(color: Colors.grey),
-              ),
+              child: const Text('Google', style: TextStyle(color: Colors.grey)),
             ),
           ),
 
@@ -83,7 +80,7 @@ class LoginClonePage extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {},
               child: const Text(
-                'f     Facebook',
+                'Facebook',
                 style: TextStyle(color: Colors.grey),
               ),
             ),
