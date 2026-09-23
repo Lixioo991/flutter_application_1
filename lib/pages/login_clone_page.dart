@@ -26,11 +26,6 @@ class LoginClonePage extends StatelessWidget {
 
           const SizedBox(height: 25),
 
-          const Text(
-            'Masuk',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-
           Container(
             margin: const EdgeInsets.all(25),
             child: CustomTxtfield(
