@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_application_1/pages/Kalkulator_Pages.dart';
+import 'package:flutter_application_1/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(title: 'Flutter Belajar', home: KalkulatorPages());
+    return GetMaterialApp(
+      title: "My Learning  App",
+      initialRoute: Routes.registration,
+      getPages: Routes.myPages,
+    );
   }
 }
