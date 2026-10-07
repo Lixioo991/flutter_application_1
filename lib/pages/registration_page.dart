@@ -72,7 +72,7 @@ class RegistrationPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               Get.toNamed(
-                Routes.confrim_registration,
+                Routes.confrimRegistration,
                 arguments: {
                   'name': txtnama.text,
                   'alamat': txtalamat.text,
