@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_application_1/model/listmakanan_model.dart';
-
 import 'package:get/get.dart';
 
 class DetailmakananPage extends StatelessWidget {
@@ -12,13 +10,13 @@ class DetailmakananPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: const Color.fromARGB(255, 181, 231, 225),
       appBar: AppBar(
         title: const Text(
           "Detail Makanan",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -39,22 +37,17 @@ class DetailmakananPage extends StatelessWidget {
                       if (loadingProgress == null) {
                         return child;
                       }
-
                       return const SizedBox(
                         height: 200,
                         child: Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.orange,
-                          ),
+                          child: CircularProgressIndicator(color: Colors.blue),
                         ),
                       );
                     },
                   ),
                 ),
               ),
-
               const SizedBox(height: 16),
-
               Card(
                 elevation: 3,
                 child: Padding(
@@ -69,20 +62,16 @@ class DetailmakananPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-
                       const SizedBox(height: 8),
-
                       Text(
                         "Rp.${makanan.hargaMakanan}",
                         style: const TextStyle(
-                          color: Colors.orange,
+                          color: Color.fromARGB(255, 233, 57, 13),
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-
                       const SizedBox(height: 20),
-
                       const Text(
                         "Deskripsi",
                         style: TextStyle(
@@ -90,13 +79,9 @@ class DetailmakananPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-
                       const SizedBox(height: 8),
-
                       Text(makanan.desc),
-
                       const SizedBox(height: 20),
-
                       const Text(
                         "Rating",
                         style: TextStyle(
@@ -104,9 +89,7 @@ class DetailmakananPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-
                       const SizedBox(height: 8),
-
                       Row(
                         children: [
                           Text(
@@ -116,9 +99,7 @@ class DetailmakananPage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                           const SizedBox(width: 8),
-
                           Row(
                             children: List.generate(
                               makanan.rating,
@@ -128,9 +109,7 @@ class DetailmakananPage extends StatelessWidget {
                           ),
                         ],
                       ),
-
                       const SizedBox(height: 20),
-
                       const Text(
                         "Review",
                         style: TextStyle(
@@ -138,9 +117,7 @@ class DetailmakananPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-
                       const SizedBox(height: 8),
-
                       Text(makanan.review),
                     ],
                   ),

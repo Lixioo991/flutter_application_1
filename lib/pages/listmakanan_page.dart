@@ -5,17 +5,19 @@ import 'package:get/get.dart';
 
 class ListmakananPage extends StatelessWidget {
   ListmakananPage({super.key});
+
   final controller = Get.put(ListmakananController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: const Color.fromARGB(255, 181, 231, 225),
       appBar: AppBar(
         title: const Text(
           "List Makanan",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -48,7 +50,7 @@ class ListmakananPage extends StatelessWidget {
                     Text(
                       "Rp.${makanan.hargaMakanan}",
                       style: const TextStyle(
-                        color: Colors.orange,
+                        color: Color.fromARGB(255, 247, 15, 15),
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
