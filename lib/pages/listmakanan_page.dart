@@ -13,54 +13,64 @@ class ListmakananPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 181, 231, 225),
       appBar: AppBar(
-        title: const Text(
-          "List Makanan",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        title: Text("List Makanan"),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: controller.listMakanan.length,
-        itemBuilder: (context, index) {
-          final makanan = controller.listMakanan[index];
-          return GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              print("DITEKAN: ${makanan.namaMakanan}");
-              Get.toNamed(Routes.detailMakanan, arguments: makanan);
-            },
-            child: Card(
-              elevation: 4,
-              margin: const EdgeInsets.only(bottom: 16),
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      makanan.namaMakanan,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      "Rp.${makanan.hargaMakanan}",
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 247, 15, 15),
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+      body: Container(
+        margin: EdgeInsets.all(10),
+        child: Obx(
+          () => ListView.builder(
+            itemCount: controller.listMakanan.length,
+            itemBuilder: (context, index) {
+              final makanan = controller.listMakanan[index];
+              return Dismissible(
+                key: ValueKey(makanan.namaMakanan),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  color: Colors.red,
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 20),
+                  child: const Icon(Icons.delete, color: Colors.white),
                 ),
-              ),
-            ),
-          );
-        },
+                onDismissed: (direction) {
+                  controller.listMakanan.removeAt(index);
+                },
+                child: InkWell(
+                  onTap: () {
+                    Get.toNamed(
+                      Routes.detailMakanan,
+                      arguments: {
+                        'namaMakanan': makanan.namaMakanan,
+                        'hargaMakanan': makanan.hargaMakanan,
+                        'imageUrl': makanan.imageUrl,
+                        'desc': makanan.desc,
+                        'rating': makanan.rating,
+                        'review': makanan.review,
+                      },
+                    );
+                  },
+                  child: Card(
+                    elevation: 10,
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(
+                        title: Text(
+                          makanan.namaMakanan,
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        subtitle: Text(
+                          "Rp. " + makanan.hargaMakanan,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

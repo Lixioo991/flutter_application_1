@@ -1,130 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/model/listmakanan_model.dart';
+import 'package:flutter_application_1/controller/detailmakanan_controller.dart';
 import 'package:get/get.dart';
 
 class DetailmakananPage extends StatelessWidget {
   DetailmakananPage({super.key});
 
-  final makanan = Get.arguments as MakananModel;
+  final controller = Get.put(DetailmakananController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 181, 231, 225),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(
-          "Detail Makanan",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        title: Text("Detail Makanan"),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Card(
-                elevation: 4,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    makanan.imageUrl,
-                    width: double.infinity,
-                    height: 200,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      }
-                      return const SizedBox(
-                        height: 200,
-                        child: Center(
-                          child: CircularProgressIndicator(color: Colors.blue),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            Image.network(
+              controller.imageUrl,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 16),
+            Text(
+              controller.namaMakanan,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 16),
-              Card(
-                elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        makanan.namaMakanan,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        "Rp.${makanan.hargaMakanan}",
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 233, 57, 13),
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        "Deskripsi",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(makanan.desc),
-                      const SizedBox(height: 20),
-                      const Text(
-                        "Rating",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Text(
-                            "${makanan.rating}/5",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Row(
-                            children: List.generate(
-                              makanan.rating,
-                              (index) =>
-                                  const Icon(Icons.star, color: Colors.amber),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        "Review",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(makanan.review),
-                    ],
-                  ),
-                ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "Rp.${controller.hargaMakanan}",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              "Deskripsi",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(controller.desc),
+            SizedBox(height: 20),
+            Text(
+              "Rating",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text("${controller.rating}/5 ⭐"),
+            SizedBox(height: 20),
+            Text(
+              "Review",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(controller.review),
+          ],
         ),
       ),
     );
