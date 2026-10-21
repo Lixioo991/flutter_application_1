@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../model/listmakanan_model.dart';
 
 class ListmakananController extends GetxController {

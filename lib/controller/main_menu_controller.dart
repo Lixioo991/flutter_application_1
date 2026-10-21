@@ -12,8 +12,8 @@ class MainMenuController extends GetxController {
   }
 
   final List<Widget> listPages = [
-    const HomePage(),
-    const HistoryPage(),
-    const ProfilePage(),
+    HomePage(),
+    HistoryPage(),
+    ProfilePage(),
   ];
 }
