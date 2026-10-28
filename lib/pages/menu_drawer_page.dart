@@ -12,6 +12,10 @@ class MenuDrawerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(title: const Text('Menu Drawer')),
+        body: IndexedStack(
+          index: controller.selectedIndex.value,
+          children: controller.listPages,
+        ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -52,10 +56,6 @@ class MenuDrawerPage extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        body: IndexedStack(
-          index: controller.selectedIndex.value,
-          children: controller.listPages,
         ),
       ),
     );
